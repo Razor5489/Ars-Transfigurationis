@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ars Transfigurationis · Edmund Valemont</title>
+<meta name="description" content="Il manuale personale di Trasfigurazione di Edmund Valemont per Nightfall. Sette anni, ventotto lezioni, due settimane per anno.">
+<meta name="theme-color" content="#28131d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="#p=0" aria-label="Torna alla copertina"><span class="brand-mark">✧</span><span>ARS TRANSFIGURATIONIS<small>Il volume di Edmund Valemont</small></span></a>
+ <nav aria-label="Strumenti di lettura"><button id="indexButton" aria-expanded="false" aria-controls="drawer">☷ <span>Indice</span></button><button id="mode" aria-pressed="false">Pagina singola</button><button id="bookmark" aria-label="Salva segnalibro">♧ <span>Segnalibro</span></button><button id="font" aria-label="Aumenta dimensione testo">A+</button></nav>
+</header>
+<div class="reading-bar"><span id="context">Hogwarts · Edizione 1890</span><span id="position"></span></div>
+<main id="reader" aria-label="Libro di Trasfigurazione"><div id="book" class="book"></div></main>
+<footer class="reader-footer"><button id="prev" aria-label="Pagina precedente">← <span>Indietro</span></button><div class="year-tabs" aria-label="Vai all’anno"></div><button id="next" aria-label="Pagina successiva"><span>Avanti</span> →</button></footer>
+<p class="hint">Usa le frecce per sfogliare · La posizione si conserva su questo dispositivo</p>
+<div id="shade" hidden></div>
+<aside id="drawer" aria-label="Indice del volume" hidden>
+ <div class="drawer-heading"><div><small>TABULA MATERIARUM</small><h2>L’ordine della materia</h2></div><button id="closeIndex" aria-label="Chiudi indice">×</button></div>
+ <label for="search">Cerca una lezione o una formula</label><input id="search" type="search" placeholder="Es. Chartanimus, essenza…">
+ <div class="index-tools"><button id="coverLink">Copertina</button><button id="planLink">Piano delle lezioni</button><button id="savedLink">Apri segnalibro</button></div>
+ <div id="indexList"></div>
+ <p class="index-note">7 anni · 14 settimane · 28 lezioni<br>Creato per NightFall da Razor</p>
+</aside>
+<div id="notice" role="status" aria-live="polite"></div>
+<script src="content.js"></script><script src="reader.js"></script>
+</body></html>
