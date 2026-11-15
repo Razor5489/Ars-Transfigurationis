@@ -263,3 +263,4 @@ const LESSONS = [
  'Modificare l’aspetto fino a somigliare a un’altra persona equivale a cambiare la propria identità originaria?',
  'No. L’apparenza muta, ma non dimostra il cambiamento dell’identità o dell’essenza originaria.','19–20, cap. 4']
 ].map((l,i)=>({id:i+1,year:Math.floor(i/4)+1,week:Math.floor(i%4/2)+1,meeting:i%4+1,title:l[0],subtitle:l[1],theory:l.slice(2,5),materials:l[5],steps:l[6],check:l[7],question:l[8],answer:l[9],source:l[10]}));
+

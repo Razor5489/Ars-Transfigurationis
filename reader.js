@@ -1,69 +1,179 @@
+
+'use strict';
+const data=JSON.parse(document.getElementById('book-data').textContent),count=data.pages.length;
 const $=id=>document.getElementById(id);
-const roman=['I','II','III','IV','V','VI','VII'];
-const pages=[],yearPages=[],lessonPages=[];
-const readStore=(key,fallback=null)=>{try{return localStorage.getItem('ars-transfigurationis-'+key)??fallback}catch{return fallback}};
-const writeStore=(key,val)=>{try{localStorage.setItem('ars-transfigurationis-'+key,String(val));return true}catch{return false}};
-const seal=`<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="50" cy="50" r="43"/><path d="M50 9 85 70H15ZM50 91 15 30h70ZM50 20v60M20 50h60"/><circle cx="50" cy="50" r="14"/></g><path d="m50 34 4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="currentColor"/></svg>`;
-const cover=`<section class="cover"><div class="edition">HOGWARTS · MDCCCXC</div><div><p>Il mutamento della materia</p><h1>Ars<span>Transfigurationis</span></h1><div class="seal">${seal}</div><p>Trattato scolastico di Trasfigurazione<br>Dai fondamenti all’identità della forma</p></div><div><div class="author">Edmund Valemont</div><div class="edition">Sette anni · Ventotto lezioni</div><button id="openBook">Apri il volume →</button><div class="imprint">NIGHTFALL · EDIZIONE PERSONALE</div></div></section>`;
-pages.push({html:cover,title:'Copertina'});
-function leaf(body,title,year=null){return {title,year,html:`<article class="page"><div class="running"><span>ARS TRANSFIGURATIONIS</span><span>${year?roman[year-1]+' ANNO':'EDMUND VALEMONT'}</span></div>${body}<div class="folio"><span>Hogwarts · 1890</span><span>__FOLIO__</span></div></article>`}}
-pages.push(leaf(`<div class="kicker">AL LETTORE</div><h2>La forma cambia.<br>Lo studio rimane.</h2><p class="subtitle">Prefazione al volume personale</p><p class="initial">La Trasfigurazione comincia prima del gesto: comincia quando sappiamo osservare. Un buon trasfiguratore non impone alla materia un desiderio confuso; prepara un’immagine precisa e ne riconosce i limiti.</p><p>Questo volume accompagna sette annualità. Ogni anno si svolge in due settimane, con due lezioni per settimana: quattro incontri prima di procedere all’anno successivo.</p><p>La pagina di sinistra presenta i principi. Quella di destra li traduce in osservazione, progetto e attività guidata. Le risposte di ripasso sono consultabili dopo aver provato a ragionare da soli.</p><div class="callout"><strong>Il metodo di Valemont</strong>Osservare. Visualizzare. Eseguire con controllo. Confrontare il risultato. Correggere.</div><p class="source">Rielaborazione didattica del libro «Trasfigurazione» fornito per il progetto. Le attività sono proposte originali. Terminologia e modelli del riferimento sono adattati al contesto di Nightfall; riferimenti a eventi o personaggi posteriori al 1890 sono omessi. Gli argomenti avanzati non conferiscono automaticamente abilità al personaggio.</p><p class="subtitle">Edmund Valemont</p>`,'Prefazione'));
-pages.push(leaf(`<div class="kicker">ORDINAMENTO DEL CORSO</div><h2>Due settimane.<br>Un anno di studio.</h2><p class="subtitle">Il medesimo ritmo per tutte le sette annualità</p><div class="plan-grid"><div class="plan-cell"><strong>Settimana I</strong>Lezione 1 · principi e osservazione<br>Lezione 2 · sviluppo e confronto</div><div class="plan-cell"><strong>Settimana II</strong>Lezione 3 · applicazione guidata<br>Lezione 4 · sintesi e ripasso</div></div><p>Con la quarta lezione si conclude il ciclo dell’annualità. Il percorso prosegue poi con la prima lezione dell’anno seguente.</p><h3>Un incontro di quindici minuti</h3><p>2 minuti per obiettivo e preparazione; 3 per la lettura guidata; 7 per esercizio, dimostrazione o caso; 3 per confronto e ripasso.</p><div class="callout"><strong>Un obiettivo per incontro</strong>Quando compaiono più formule, una sola attività è centrale. Le altre servono a confrontare effetti e difficoltà.</div><p>Le lezioni mancanti possono essere recuperate leggendo teoria e scheda operativa. Il ripasso è uno strumento di studio e non costituisce un esame finale.</p><p class="source">Indice per anno, ricerca, pagina singola e segnalibro sono disponibili nella barra superiore. La posizione si conserva solo sul dispositivo e nel browser in uso.</p>`,'Piano delle lezioni'));
-YEARS.forEach((y,yi)=>{
- const year=yi+1;yearPages.push(pages.length);
- const annual=LESSONS.filter(l=>l.year===year);
- pages.push(leaf(`<div class="year-page"><div class="kicker">LIBER ${roman[yi]}</div><div class="year-number">${roman[yi]}</div><h2>${y.name}</h2><p class="subtitle">${y.goal}</p><div class="ornament">✧</div><div class="annual-plan">${annual.map(l=>`<button data-lesson="${l.id}"><small>SETTIMANA ${roman[l.week-1]} · LEZIONE ${l.meeting}</small>${l.title}</button>`).join('')}</div><p class="source">Due settimane · Due lezioni settimanali<br>Quattro incontri, poi l’anno successivo</p></div>`,`${roman[yi]} anno · ${y.name}`,year));
- annual.forEach(l=>{
-  lessonPages[l.id]=pages.length;
-  pages.push(leaf(`<div class="kicker">SETTIMANA ${roman[l.week-1]} · LEZIONE ${l.meeting} / 4</div><h2>${l.title}</h2><p class="subtitle">${l.subtitle}</p>${l.theory.map((p,i)=>`<p${i===0?' class="initial"':''}>${p}</p>`).join('')}<p class="source">Riferimento nel volume di partenza: p. ${l.source}.</p>`,`${roman[yi]} anno · Lezione ${l.meeting} · Teoria`,year));
-  pages.push(leaf(`<div class="kicker">OFFICINA DELLA FORMA · ${String(l.id).padStart(2,'0')}</div><h2>Osservare.<br>Mettere alla prova.</h2><p class="subtitle">${l.title} · Attività guidata</p><div class="callout"><strong>Preparazione</strong>${l.materials}</div><ol>${l.steps.map(s=>`<li>${s}</li>`).join('')}</ol><div class="callout"><strong>Che cosa verificare</strong>${l.check}</div><h3>Una domanda di ripasso</h3><p>${l.question}</p><details><summary>Consulta il ragionamento</summary><p>${l.answer}</p></details><p class="source">${l.meeting===4?(year<7?'Concluso il ciclo delle due settimane, si prosegue con il '+roman[year]+' anno.':'Con questa lezione si conclude il percorso dei sette anni.'):'Prosegui con la lezione successiva della stessa annualità.'}</p>`,`${roman[yi]} anno · Lezione ${l.meeting} · Attività`,year));
- });
-});
-pages.push(leaf(`<div class="kicker">EX LIBRIS</div><h2>La materia attende<br>una mente precisa.</h2><div class="ornament">✧</div><p>Sette annualità. Quattordici settimane. Ventotto incontri per imparare a distinguere ciò che cambia da ciò che rimane.</p><p>Questo volume è dedicato allo studio e al gioco di ruolo nella Scuola di Magia e Stregoneria di Hogwarts di Nightfall.</p><p class="subtitle">Edmund Valemont</p><div class="callout"><strong>Colophon</strong>Testi rielaborati dal volume «Trasfigurazione». Piano delle lezioni, attività e veste editoriale preparati per questa edizione personale.</div><p class="source">Creato per NightFall da Razor.<br>Progetto amatoriale di roleplay, non ufficiale.</p>`,'Colophon'));
-let explicitSingle=readStore('mode','auto')==='single';
-let textLevel=Math.min(2,Math.max(0,Number(readStore('font','0'))||0));
-let page=0;let lastFocus=null;let touchX=null;
-function isSingle(){return explicitSingle||window.innerWidth<=850}
-function clamp(n){return Math.max(0,Math.min(pages.length-1,Number(n)||0))}
-function hashPage(){const m=location.hash.match(/^#p=(\d+)$/);return m?clamp(m[1]):null}
-function spreadStart(n){if(n===2)return 1;for(const start of lessonPages){if(start!==undefined&&(n===start||n===start+1))return start}return n}
-function displayCount(){return page===0||yearPages.includes(page)||page===pages.length-1||isSingle()?1:Math.min(2,pages.length-page)}
-page=hashPage()??clamp(readStore('page','0'));
-function alertNote(text){$('notice').textContent=text;$('notice').classList.add('show');clearTimeout(alertNote.timer);alertNote.timer=setTimeout(()=>$('notice').classList.remove('show'),2600)}
-function render(animate=false){
- const single=isSingle();if(!single)page=spreadStart(page);const count=displayCount();
- $('book').className='book'+(single||count===1?' single':'')+(page===0?' cover-open':'')+(animate?' turn':'');
- $('book').innerHTML=pages.slice(page,page+count).map((p,i)=>p.html.replace('__FOLIO__',String(page+i))).join('');
- $('prev').disabled=page===0;$('next').disabled=page+count>=pages.length;
- $('position').textContent=page===0?'Copertina':`Pagina ${page}${count===2?'–'+(page+1):''} / ${pages.length-1}`;
- $('context').textContent=pages[page].title;
- $('mode').textContent=explicitSingle?'Doppia pagina':'Pagina singola';$('mode').setAttribute('aria-pressed',String(explicitSingle));
- $('mode').disabled=window.innerWidth<=850;$('mode').title=window.innerWidth<=850?'Su questo schermo la lettura è a pagina singola':'';
- document.documentElement.style.setProperty('--reading',(17+textLevel*2)+'px');
- $('font').textContent=textLevel===2?'A−':'A+';
- document.querySelectorAll('[data-year]').forEach(el=>el.setAttribute('aria-current',String(Number(el.dataset.year)===pages[page].year)));
- if($('openBook'))$('openBook').onclick=()=>go(1);
- document.querySelectorAll('[data-lesson]').forEach(el=>el.onclick=()=>{go(lessonPages[Number(el.dataset.lesson)]);closeIndex()});
- writeStore('page',page);history.replaceState(null,'','#p='+page);
+const stage=$('stage'),book=$('book'),viewport=$('viewport'),shell=$('shell'),canvas=$('canvas');
+$('pageInput').max=count;
+const MOBILE_BREAKPOINT=900;
+function safeGetSound(){try{return false}catch(e){return false}}
+function safeSetSound(v){try{localStorage.setItem('ars-transfigurationis-sound-v2',v?'on':'off')}catch(e){}}
+let single=window.matchMedia(`(max-width:${MOBILE_BREAKPOINT}px)`).matches,current=0,busy=false,zoomed=false,
+    soundOn=safeGetSound(),idleTimer=null,audioCtx=null,manualMode=false;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+const isCompact=()=>window.matchMedia(`(max-width:${MOBILE_BREAKPOINT}px)`).matches||viewport.clientWidth<=MOBILE_BREAKPOINT;
+const indexPair=n=>single?[-1,n]:n===0?[-1,0]:[n*2-1,n*2<count?n*2:-1];
+const last=()=>single?count-1:Math.floor(count/2);
+const currentPage=()=>single?current:current===0?0:current*2-1;
+const preload=new Map();
+
+function pageText(i){return i>=0&&i<count?(data.pages[i].text||''):''}
+function pageKind(i){
+  if(i<0||i>=count)return 'blank';
+  if(data.pages[i].kind)return data.pages[i].kind;
+  const t=pageText(i),u=t.toUpperCase();
+  if(i===0||i===count-1)return 'cover';
+  if(u.includes('CONTROGUARDIA'))return 'endpaper';
+  if(u.startsWith('PAGINA DI RISPETTO'))return 'respect';
+  if(u.includes('\nANNO I\n')||u.includes('\nANNO II\n')||u.includes('\nANNO III\n')||u.includes('\nANNO IV\n')||u.includes('\nANNO V\n')||u.includes('\nANNO VI\n')||u.includes('\nANNO VII\n'))return 'divider';
+  if(u.includes('RICETTARIO'))return 'recipe';
+  if(u.includes('\nFINIS\n'))return 'finis';
+  if(u.includes('APPENDICE'))return 'appendix';
+  return 'theory';
 }
-function go(n){page=clamp(n);render(true);window.scrollTo({top:0,behavior:'instant'})}
-function next(){if(!$('next').disabled)go(page+displayCount())}
-function prev(){if(page)go(isSingle()?page-1:spreadStart(page-1))}
-function closeIndex(){if($('drawer').hidden)return;$('drawer').hidden=true;$('shade').hidden=true;$('indexButton').setAttribute('aria-expanded','false');document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
-function openIndex(){lastFocus=document.activeElement;$('drawer').hidden=false;$('shade').hidden=false;$('indexButton').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('search').focus()}
-function indexContent(){const q=$('search').value.trim().toLocaleLowerCase('it');let matches=0;$('indexList').innerHTML=YEARS.map((y,yi)=>{const ls=LESSONS.filter(l=>l.year===yi+1&&[l.title,l.subtitle,...l.theory].join(' ').toLocaleLowerCase('it').includes(q));matches+=ls.length;return ls.length?`<h3>${roman[yi]} anno · ${y.name}</h3>${ls.map(l=>`<button data-lesson="${l.id}"><small>SETTIMANA ${roman[l.week-1]} · LEZIONE ${l.meeting}</small>${l.title}<small>${l.subtitle}</small></button>`).join('')}`:''}).join('');if(!matches)$('indexList').textContent='Nessuna lezione trovata. Prova con un’altra parola.';document.querySelectorAll('#indexList [data-lesson]').forEach(el=>el.onclick=()=>{go(lessonPages[Number(el.dataset.lesson)]);closeIndex()})}
-$('prev').onclick=prev;$('next').onclick=next;$('indexButton').onclick=openIndex;$('closeIndex').onclick=closeIndex;$('shade').onclick=closeIndex;$('search').oninput=indexContent;
-$('mode').onclick=()=>{explicitSingle=!explicitSingle;writeStore('mode',explicitSingle?'single':'double');render()};
-$('font').onclick=()=>{textLevel=(textLevel+1)%3;writeStore('font',textLevel);render()};
-$('bookmark').onclick=()=>alertNote(writeStore('bookmark',page)?'Segnalibro salvato a questa pagina.':'Il browser non consente di salvare il segnalibro.');
-$('savedLink').onclick=()=>{const saved=readStore('bookmark');if(saved===null)alertNote('Non hai ancora salvato un segnalibro.');else{go(saved);closeIndex()}};
-$('coverLink').onclick=()=>{go(0);closeIndex()};$('planLink').onclick=()=>{go(2);closeIndex()};
-document.querySelector('.year-tabs').innerHTML=roman.map((r,i)=>`<button data-year="${i+1}" aria-label="Vai al ${r} anno">${r}</button>`).join('');
-document.querySelectorAll('[data-year]').forEach(el=>el.onclick=()=>go(yearPages[Number(el.dataset.year)-1]));
-document.querySelector('.brand').onclick=e=>{e.preventDefault();go(0)};
-document.addEventListener('keydown',e=>{if(!$('drawer').hidden){if(e.key==='Escape')closeIndex();if(e.key==='Tab'){const els=[...$('drawer').querySelectorAll('button,input')].filter(el=>!el.disabled);const first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}return}if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();next()}if(e.key==='ArrowLeft'){e.preventDefault();prev()}if(e.key==='Home'){e.preventDefault();go(0)}});
-$('book').addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX},{passive:true});
-$('book').addEventListener('touchend',e=>{if(touchX===null)return;const delta=e.changedTouches[0].clientX-touchX;touchX=null;if(Math.abs(delta)>85){delta<0?next():prev()}},{passive:true});
-let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>render(),120)});
-window.addEventListener('hashchange',()=>{const target=hashPage();if(target!==null&&target!==page){page=target;render()}});
-indexContent();render();
+function pageTitle(i){
+  if(data.pages[i]?.title)return data.pages[i].title;
+  const lines=pageText(i).split('\n').map(x=>x.trim()).filter(Boolean);
+  const generic=/^(ARS TRANSFIGURATIONIS|ANNO \d+|ANNO [IVX]+|FONDAMENTI|APPENDICE|MANUALE|PAGINA DI RISPETTO)/i;
+  return lines.find(x=>!generic.test(x))||`Pagina ${i+1}`;
+}
+function loadImage(i){
+  if(i<0||i>=count)return Promise.resolve();
+  if(preload.has(i))return preload.get(i);
+  const promise=new Promise(resolve=>{const im=new Image();im.decoding='async';im.onload=resolve;im.onerror=resolve;im.src=data.pages[i].image});
+  preload.set(i,promise);return promise
+}
+function imageAt(i){
+  if(i<0||i>=count)return '';
+  const alt=(pageTitle(i)+' · pagina '+(i+1)).replace(/"/g,'&quot;');
+  return '<img draggable="false" decoding="async" alt="'+alt+'" src="'+data.pages[i].image+'">'
+}
+function setPage(el,i){
+  el.innerHTML=imageAt(i);el.classList.toggle('blank',i<0||i>=count);el.dataset.kind=pageKind(i);el.dataset.page=String(i+1)
+}
+function classes(){
+  stage.classList.toggle('single',single);stage.classList.toggle('cover',!single&&current===0);
+  stage.classList.toggle('end',!single&&current===last()&&count%2===0);stage.classList.toggle('zoomed',zoomed);shell.classList.toggle('zoomed',zoomed)
+}
+function controls(){
+  const[l,r]=indexPair(current),valid=[l,r].filter(i=>i>=0);
+  $('status').textContent=valid.length===2?'Pagine '+(valid[0]+1)+'–'+(valid[1]+1)+' di '+count:'Pagina '+(valid[0]+1)+' di '+count;
+  $('pageInput').value=valid[0]+1;
+  $('prev').disabled=$('edgePrev').disabled=busy||current===0;$('next').disabled=$('edgeNext').disabled=busy||current===last();
+  $('mode').disabled=busy||isCompact();$('zoom').disabled=busy;
+  $('mode').textContent=single?'Due pagine':'Una pagina';$('zoom').textContent=zoomed?'Adatta':'Ingrandisci';
+  $('zoom').setAttribute('aria-pressed',String(zoomed));$('sound').setAttribute('aria-pressed',String(soundOn));$('sound').textContent=soundOn?'Suono':'Muto';
+  $('reading').textContent=valid.map(i=>data.pages[i].text).join('\n\n');
+  valid.forEach(i=>{loadImage(i);loadImage(i+1);loadImage(i+2);loadImage(i-1)})
+}
+function render(){classes();const[l,r]=indexPair(current);setPage($('left'),l);setPage($('right'),r);controls()}
+function syncResponsiveMode(){
+  const compact=isCompact();
+  if(compact&&!single){const p=currentPage();single=true;current=p;render()}
+  else if(!compact&&!manualMode&&single){const p=currentPage();single=false;current=p===0?0:Math.floor((p+1)/2);render()}
+}
+function resize(){
+  syncResponsiveMode();stage.classList.toggle('zoomed',zoomed);shell.classList.toggle('zoomed',zoomed);
+  const compact=isCompact(),ratio=595.276/841.89,pages=single?1:2,padX=compact?20:96,padY=compact?18:62;
+  const availableW=Math.max(180,viewport.clientWidth-padX),availableH=Math.max(250,viewport.clientHeight-padY);
+  const fittedPageW=Math.min(availableW/pages,availableH*ratio,760),fittedH=fittedPageW/ratio;
+  const scale=zoomed?(compact?1.52:1.62):1,height=fittedH*scale,pageW=height*ratio,stageW=pageW*pages;
+  stage.style.setProperty('--height',height+'px');stage.style.setProperty('--width',pageW+'px');
+  canvas.style.width=zoomed?Math.max(viewport.clientWidth,stageW+(compact?34:120))+'px':'100%';
+  canvas.style.minHeight=zoomed?Math.max(viewport.clientHeight,height+(compact?34:84))+'px':'100%';
+  viewport.style.overflow=zoomed?'auto':'hidden'
+}
+function face(image,back=false){
+  const d=document.createElement('div');d.className='face '+(back?'back':'front');d.dataset.kind=pageKind(image);d.innerHTML=imageAt(image);return d
+}
+function isHeavyTurn(indices){return indices.some(i=>pageKind(i)==='cover'||pageKind(i)==='endpaper')}
+function isDividerTurn(indices){return indices.some(i=>pageKind(i)==='divider')}
+
+function makeNoiseBuffer(duration){
+  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+  const len=Math.max(1,Math.floor(audioCtx.sampleRate*duration)),buf=audioCtx.createBuffer(1,len,audioCtx.sampleRate),ch=buf.getChannelData(0);
+  let smooth=0;for(let i=0;i<len;i++){const white=Math.random()*2-1;smooth=smooth*.82+white*.18;ch[i]=smooth*.78+white*.22}return buf
+}
+function rustleSound(heavy=false){
+  if(!soundOn)return;
+  try{
+    audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();
+    const duration=(heavy?.28:.21)+Math.random()*.035,src=audioCtx.createBufferSource(),high=audioCtx.createBiquadFilter(),low=audioCtx.createBiquadFilter(),gain=audioCtx.createGain();
+    src.buffer=makeNoiseBuffer(duration);src.playbackRate.value=.95+Math.random()*.08;
+    high.type='highpass';high.frequency.value=heavy?115:210;high.Q.value=.3;low.type='lowpass';low.frequency.value=heavy?1750:2450;low.Q.value=.4;
+    const now=audioCtx.currentTime,peak=heavy?.22:.18;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(peak,now+.035);
+    gain.gain.exponentialRampToValueAtTime(.06,now+duration*.62);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+    src.connect(high);high.connect(low);low.connect(gain);gain.connect(audioCtx.destination);src.start(now)
+  }catch(e){}
+}
+function settleSound(heavy=false){
+  if(!soundOn)return;
+  try{
+    audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),now=audioCtx.currentTime;
+    osc.type='sine';osc.frequency.setValueAtTime(heavy?92:118,now);osc.frequency.exponentialRampToValueAtTime(heavy?70:88,now+.055);
+    gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(heavy?.025:.015,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.07);
+    osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.075)
+  }catch(e){}
+}
+/* Chromium fix: no CSS filter on the rotating 3D leaf; filters can flatten its two faces and reveal mirrored text. */
+function turnFrames(forward,heavy=false){
+  const s=forward?-1:1;
+  if(heavy)return[
+    {transform:'rotateY(0deg) translateZ(0) scaleX(1)',offset:0},
+    {transform:`rotateY(${s*18}deg) translateZ(3px) scaleX(.999)`,offset:.18},
+    {transform:`rotateY(${s*78}deg) translateZ(13px) scaleX(.992)`,offset:.48},
+    {transform:`rotateY(${s*145}deg) translateZ(7px) scaleX(.997)`,offset:.82},
+    {transform:`rotateY(${s*180}deg) translateZ(0) scaleX(1)`,offset:1}
+  ];
+  return[
+    {transform:'rotateY(0deg) translateZ(0) scaleX(1) skewY(0deg)',offset:0},
+    {transform:`rotateY(${s*20}deg) translateZ(4px) scaleX(.998) skewY(${s*.12}deg)`,offset:.14},
+    {transform:`rotateY(${s*65}deg) translateZ(17px) scaleX(.985) skewY(${s*.38}deg)`,offset:.38},
+    {transform:`rotateY(${s*103}deg) translateZ(25px) scaleX(.968) skewY(${s*.52}deg)`,offset:.56},
+    {transform:`rotateY(${s*151}deg) translateZ(9px) scaleX(.991) skewY(${s*.22}deg)`,offset:.83},
+    {transform:`rotateY(${s*180}deg) translateZ(0) scaleX(1) skewY(0deg)`,offset:1}
+  ]
+}
+async function turnTo(target){
+  target=Math.max(0,Math.min(last(),target));if(busy||target===current)return;
+  busy=true;controls();
+  const forward=target>current,[ol,or]=indexPair(current),[nl,nr]=indexPair(target),involved=[ol,or,nl,nr].filter(i=>i>=0);
+  const heavy=isHeavyTurn(involved),divider=isDividerTurn(involved);rustleSound(heavy);
+  await Promise.all([loadImage(nl),loadImage(nr)]);
+  if(reduce.matches){current=target;busy=false;render();resize();settleSound(heavy);return}
+  const leaf=document.createElement('div');leaf.className='leaf '+(forward?'forward':'backward');leaf.dataset.kind=heavy?'cover':divider?'divider':'paper';
+  if(single){setPage($('right'),nr);leaf.append(face(or),face(nr,true))}
+  else{
+    if(forward){setPage($('left'),ol);setPage($('right'),nr);leaf.append(face(or),face(nl,true))}
+    else{setPage($('left'),nl);setPage($('right'),or);leaf.append(face(ol),face(nr,true))}
+    const was=current;current=target;classes();current=was
+  }
+  book.append(leaf);
+  const duration=heavy?650:divider?580:500;
+  const motion=leaf.animate(turnFrames(forward,heavy),{duration,easing:heavy?'cubic-bezier(.22,.58,.20,1)':'cubic-bezier(.18,.67,.18,1)',fill:'forwards'});
+  try{await motion.finished}catch(e){}
+  current=target;leaf.remove();busy=false;render();settleSound(heavy);wake()
+}
+const next=()=>turnTo(current+1),prev=()=>turnTo(current-1);
+$('next').onclick=$('edgeNext').onclick=next;$('prev').onclick=$('edgePrev').onclick=prev;
+function goPage(n){n=Math.max(0,Math.min(count-1,n));return turnTo(single?n:n===0?0:Math.floor((n+1)/2))}
+$('jump').onsubmit=e=>{e.preventDefault();const n=Number($('pageInput').value);if(Number.isFinite(n))goPage(n-1)};
+$('mode').onclick=()=>{if(busy||isCompact())return;const p=currentPage();manualMode=true;single=!single;current=single?p:p===0?0:Math.floor((p+1)/2);render();resize()};
+$('zoom').onclick=()=>{zoomed=!zoomed;resize();controls();if(!zoomed)viewport.scrollTo({top:0,left:0});else viewport.scrollTo({top:0,left:Math.max(0,(canvas.scrollWidth-viewport.clientWidth)/2),behavior:'smooth'})};
+$('sound').onclick=()=>{soundOn=!soundOn;safeSetSound(soundOn);controls();wake()};
+$('full').onclick=async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch{$('full').title='Schermo intero non disponibile'}};
+for(const chapter of data.chapters){const op=document.createElement('option');op.value=chapter.page;op.textContent=chapter.title;$('chapters').append(op)}
+$('chapters').onchange=e=>{if(e.target.value!=='')goPage(Number(e.target.value)-1);e.target.value=''};
+document.addEventListener('keydown',e=>{
+  wake();if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();next()}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+  if(e.key==='Home'){e.preventDefault();turnTo(0)}if(e.key==='End'){e.preventDefault();turnTo(last())}
+  if(e.key.toLowerCase()==='f'&&!e.ctrlKey&&!e.metaKey){$('full').click()}
+});
+let swipe=null;
+book.addEventListener('touchstart',e=>{wake();const t=e.changedTouches[0];swipe={x:t.clientX,y:t.clientY}},{passive:true});
+book.addEventListener('touchend',e=>{if(!swipe||zoomed){swipe=null;return;}const t=e.changedTouches[0],dx=t.clientX-swipe.x,dy=t.clientY-swipe.y;if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.3){dx<0?next():prev()}swipe=null},{passive:true});
+function wake(){shell.classList.remove('idle');clearTimeout(idleTimer);idleTimer=setTimeout(()=>{if(!shell.contains(document.activeElement)||document.activeElement===document.body)shell.classList.add('idle')},4500)}
+['mousemove','mousedown','touchstart','wheel'].forEach(ev=>document.addEventListener(ev,wake,{passive:true}));
+let resizeTimer=null;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(resize,80)});document.addEventListener('fullscreenchange',resize);
+render();resize();wake();loadImage(0).then(()=>$('loading').hidden=true);

@@ -1,19 +1,15 @@
 # Ars Transfigurationis
 
-Manuale personale di Trasfigurazione di Edmund Valemont per Nightfall RP, ambientato nel 1890.
+Volume personale di Edmund Valemont per NightFall. Sette anni, due settimane per anno, due lezioni settimanali: 28 lezioni.
 
-## Corso
+## Edizione II
 
-Sette anni, ognuno composto da due settimane con due lezioni per settimana. Totale: 14 settimane e 28 lezioni. Dopo la quarta lezione si prosegue con l’anno successivo. Ogni lezione ha una pagina di teoria e una scheda operativa, con attività guidata, controllo e domanda di ripasso. Non è previsto un esame finale.
+Il primo anno rispetta le lezioni del server: fondamenti e parametri, Colovaria, Aguamenti, Avis. Il confronto Avis/Avifors al terzo anno è un approfondimento. Vedere COURSE_REFERENCE.md per le assegnazioni documentate nelle schermate e le indicazioni per i libri futuri.
 
-I testi sono rielaborati dal PDF «Trasfigurazione» fornito dall’utente. I richiami di pagina rimandano al documento originale. Le attività sono proposte didattiche originali. Riferimenti anacronistici posteriori al 1890 sono esclusi; gli argomenti avanzati sono trattati secondo il livello indicato, senza conferire abilità automatiche ai personaggi.
+80 pagine A4 in SVG, copertina verde e oro, carta avorio, lettore e sfogliatura derivati dalla struttura di Ars Potionum. Indice ricercabile, linguette degli anni, zoom, segnalibri, modalità a pagina singola o doppia. I comandi si ritirano durante la lettura.
 
-## Lettore
+## Sorgenti
 
-Libro a doppia pagina su desktop e pagina singola su dispositivi piccoli, indice ricercabile, accesso diretto ai sette anni, navigazione da tastiera e scorrimento orizzontale tattile, testo ingrandibile, segnalibro e ripresa locale della lettura. I dati di lettura restano nel browser del dispositivo. Nessun account richiesto.
+content.js e server-lessons.js contengono i testi. build-book.py genera le pagine e book-data.json (richiede Python, reportlab e Node). La rigenerazione sincronizza anche lo script book-data incorporato in index.html. Nessuna compilazione richiesta per la pubblicazione: GitHub Pages serve main dalla radice.
 
-## Pubblicazione
-
-Sito statico senza compilazione. Caricare `index.html`, `style.css`, `content.js`, `reader.js`, `favicon.svg` e `.nojekyll` nella radice del repository. In Settings → Pages selezionare Deploy from a branch → main → / (root). Il sito non richiede servizi esterni; i caratteri Google Fonts sono facoltativi e hanno fallback locali.
-
-Creato per NightFall da Razor. Progetto amatoriale di roleplay, non ufficiale.
+Creato per NightFall da Razor. Progetto amatoriale non ufficiale.
