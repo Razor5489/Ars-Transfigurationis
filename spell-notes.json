@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Colovaria",
+    "lesson": 1,
+    "effect": "Cambia il colore del bersaglio. La variazione cromatica si distingue da una trasformazione della forma, delle dimensioni o del materiale.",
+    "notions": "Colore e tonalità non coincidono: il primo identifica la tinta; la seconda ne descrive sfumature e luminosità. Una colorazione uniforme richiede attenzione alle diverse superfici.",
+    "example": "Scegliere un oggetto chiaro e una tinta precisa. Far descrivere quali parametri devono cambiare e quali devono restare invariati.",
+    "question": "Un oggetto blu ma deformato rispetta un progetto soltanto cromatico?",
+    "answer": "No. Il colore può essere corretto mentre la struttura è stata modificata senza essere richiesta.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Aguamenti",
+    "lesson": 2,
+    "effect": "Fa scaturire acqua dalla bacchetta. Nel programma della scuola è una formula di Trasfigurazione del primo anno.",
+    "notions": "La comparsa dell’acqua si distingue dalla trasformazione di un oggetto visibile. Il docente collega origine, direzione e destinazione dell’effetto al tema dell’evocazione.",
+    "example": "Predisporre un recipiente. Chiedere quale sia la destinazione dell’acqua e perché la quantità debba rispondere al compito, anziché essere aumentata per esibizione.",
+    "question": "Produrre acqua dimostra che un oggetto sia stato trasformato?",
+    "answer": "No. Bisogna ricostruire l’origine dell’effetto; la sola presenza finale dell’acqua non dimostra una trasformazione di materia individuata.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Avis",
+    "lesson": 3,
+    "effect": "Fa apparire uccelli dalla bacchetta. Nel modello didattico del volume l’apparizione è temporanea e viene distinta dalla trasformazione di un bersaglio presente.",
+    "notions": "Becco, ali e piumaggio aiutano a riconoscere la forma aviaria. Il confronto con Avifors riguarda soprattutto l’origine del risultato, non soltanto il suo aspetto.",
+    "example": "Far disegnare due sequenze: bacchetta e apparizione; oggetto iniziale e forma di volatile. Confrontare ciò che manca o cambia nelle due descrizioni.",
+    "question": "Quale elemento distingue Avis da Avifors?",
+    "answer": "Avis è studiato come apparizione; Avifors come trasformazione di un bersaglio già presente.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Acutus",
+    "lesson": 4,
+    "effect": "Nel riferimento trasforma un piccolo oggetto in un ago, con punta e cruna riconoscibili.",
+    "notions": "La forma utile richiede più della somiglianza metallica: sottigliezza, continuità del corpo e proporzioni della cruna definiscono la struttura.",
+    "example": "Confrontare un disegno di ago e un semplice bastoncino appuntito. Chiedere quali caratteristiche manchino al secondo per corrispondere al progetto.",
+    "question": "Il solo colore argentato dimostra una trasfigurazione riuscita?",
+    "answer": "No. Devono essere riconoscibili struttura e proporzioni dell’ago, oltre al colore.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Malum",
+    "lesson": 5,
+    "effect": "Nel modello del riferimento trasforma un oggetto in una mela apparente. L’aspetto ottenuto non la rende un alimento commestibile.",
+    "notions": "Profilo, buccia e sfumature riguardano l’apparenza. Il manuale usa l’esempio per distinguere una forma imitata dalle proprietà autentiche di ciò che rappresenta.",
+    "example": "Descrivere una mela vera e una forma trasfigurata senza assaggiarle. Separare le qualità osservabili dalle proprietà che il solo aspetto non dimostra.",
+    "question": "Una forma che sembra un frutto può essere considerata cibo?",
+    "answer": "No. La somiglianza non basta; nel modello del volume la mela ottenuta non è destinata al consumo.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Gommosus",
+    "lesson": 5,
+    "effect": "Rende il bersaglio morbido ed elastico secondo la descrizione del riferimento. Modifica soprattutto la consistenza della struttura.",
+    "notions": "Una proprietà può cambiare anche quando colore e profilo restano simili. È utile distinguere elasticità, rigidità e forma invece di usare soltanto la vista.",
+    "example": "Confrontare, su descrizione o campioni predisposti, un oggetto rigido e uno elastico. Far spiegare quale parametro sia stato modificato.",
+    "question": "Se il colore resta uguale, la trasformazione può essere riuscita?",
+    "answer": "Sì. Il progetto riguarda la consistenza; il colore non è il parametro principale.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Vermiculus",
+    "lesson": 6,
+    "effect": "Nel riferimento conduce un piccolo oggetto a una forma vermiforme apparente.",
+    "notions": "La semplicità del profilo non elimina il lavoro su segmenti, proporzioni e movimento. La forma animata viene distinta dalla creazione di vita naturale.",
+    "example": "Confrontare il disegno di una forma vermiforme con quello di un topo. Individuare quali parti rendano più complesso il secondo progetto.",
+    "question": "Una forma che si muove prova la creazione di un animale naturale?",
+    "answer": "No. Nel modello didattico il movimento è un effetto magico e non dimostra una nuova essenza.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Snufflifors",
+    "lesson": 6,
+    "effect": "Trasforma un piccolo oggetto in una figura di topo secondo il riferimento del corso.",
+    "notions": "Muso, zampe, coda e rivestimento devono appartenere a una struttura coerente. La taglia ridotta non rende automaticamente semplice il progetto.",
+    "example": "Far annotare le parti riconoscibili della forma finale e confrontarle con la disposizione iniziale dell’oggetto.",
+    "question": "Perché una coda corretta non basta a definire un topo riuscito?",
+    "answer": "Perché il risultato richiede proporzioni e rapporti coerenti tra tutte le parti.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Incarcifors",
+    "lesson": 6,
+    "effect": "Trasforma un oggetto già presente in una gabbia. L’origine materiale lo distingue dall’apparizione di funi.",
+    "notions": "Base, sbarre e chiusura definiscono una struttura; uno spazio apparentemente circondato non equivale a un contenitore completo.",
+    "example": "Disegnare una gabbia partendo dalle dimensioni del bersaglio iniziale. Chiedere quali parti rendano verificabile il progetto.",
+    "question": "Incarcifors evoca una gabbia senza bersaglio iniziale?",
+    "answer": "No. Nel riferimento modifica un oggetto presente.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Feraverto",
+    "lesson": 7,
+    "effect": "Trasforma un piccolo animale in un calice. Il corso ne prevede l’osservazione guidata e l’analisi del risultato.",
+    "notions": "Residui della forma iniziale, come piume o dettagli corporei, indicano una trasformazione incompleta. La stabilità nel tempo e la correttezza della forma sono criteri diversi.",
+    "example": "Mostrare il disegno di un calice con caratteristiche residue. Far individuare quali parametri non corrispondano alla forma richiesta.",
+    "question": "Un calice stabile ma coperto di piume è completamente riuscito?",
+    "answer": "No. La durata dell’effetto non corregge l’incompletezza della struttura.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Inferacus",
+    "lesson": 7,
+    "effect": "Nel riferimento trasforma un riccio o un porcospino in un portaspilli.",
+    "notions": "La relazione tra aculei e funzione del risultato rende visibile il legame tra forma iniziale e progetto finale. Corpo, appoggio e superficie vanno ripensati insieme.",
+    "example": "Confrontare su scheda la distribuzione degli aculei con quella delle parti del portaspilli. L’esercizio resta diagnostico.",
+    "question": "Perché non basta cambiare soltanto la sagoma esterna?",
+    "answer": "Perché il progetto riguarda anche disposizione e funzione delle parti, oltre al profilo.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Reparifarge",
+    "lesson": 8,
+    "effect": "Ripristina la forma iniziale di un bersaglio trasfigurato in modo incompleto o scorretto, secondo il riferimento.",
+    "notions": "Detrasfigurare richiede di conoscere ciò che c’era prima. Il ripristino di una forma si distingue dalla ricomposizione materiale di un oggetto rotto.",
+    "example": "Affiancare il disegno iniziale e quello di una trasfigurazione incompleta. Far indicare quali proprietà debbano essere recuperate.",
+    "question": "Reparifarge e Reparo rispondono necessariamente allo stesso problema?",
+    "answer": "No. Il primo riguarda qui una trasfigurazione da correggere; il secondo ricompone un oggetto danneggiato.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Lapifors",
+    "lesson": 9,
+    "effect": "Trasforma un oggetto o un animale in una forma di coniglio secondo il testo di riferimento.",
+    "notions": "È detto bivalente perché ammette due categorie di origine. La stessa forma finale può richiedere progetti diversi quando la struttura iniziale cambia.",
+    "example": "Confrontare una scatola e un piccolo animale come punti di partenza soltanto su scheda. Elencare proporzioni e parti da ripensare.",
+    "question": "La stessa forma finale dimostra che la difficoltà iniziale fosse uguale?",
+    "answer": "No. Conoscere il risultato non basta: conta anche il bersaglio di partenza.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Avifors",
+    "lesson": 10,
+    "effect": "Trasforma un bersaglio presente in una forma di volatile.",
+    "notions": "Il risultato può somigliare agli uccelli di Avis, ma la sequenza ha un’origine differente. Ali, becco e piumaggio devono essere pensati in relazione alla materia iniziale.",
+    "example": "Ricostruire il prima e il dopo di un oggetto trasformato. Far spiegare come si possa distinguere la trasformazione da un’apparizione.",
+    "question": "Per classificare l’effetto basta vedere un uccello alla fine?",
+    "answer": "No. Occorre sapere se una materia già presente sia stata trasformata.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Farfallus Explodit",
+    "lesson": 10,
+    "effect": "Nel riferimento produce farfalle luminose, descritte come effetto capace di distrarre e rendere riconoscibile la posizione di chi lo evoca.",
+    "notions": "La luminosità è una proprietà osservabile. Distrazione e riconoscibilità dipendono dalla situazione e non giustificano l’attribuzione di altri effetti al nome della formula.",
+    "example": "Discutere perché una manifestazione luminosa possa attirare l’attenzione sia sull’effetto sia sulla sua origine.",
+    "question": "Dal nome si può dedurre un’esplosione con effetti non descritti?",
+    "answer": "No. Si conserva la descrizione fornita dal riferimento, senza ricavare altri poteri dalla denominazione.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Glisseo",
+    "lesson": 11,
+    "effect": "Trasforma una scala in uno scivolo, modificando la struttura e la funzione della superficie.",
+    "notions": "Uno spazio simile può diventare percorribile in modo diverso. Il mutamento strutturale ha conseguenze sul movimento di chi lo attraversa.",
+    "example": "Confrontare due sezioni disegnate, gradini e piano inclinato. Far descrivere ciò che cambia nella funzione oltre che nell’aspetto.",
+    "question": "Se l’area occupata resta simile, la trasformazione è irrilevante?",
+    "answer": "No. La funzione e le condizioni del movimento cambiano profondamente.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Furunculus",
+    "lesson": 11,
+    "effect": "Provoca eruzioni o foruncoli sulla pelle. Viene riconosciuto come fattura attraverso lo studio teorico.",
+    "notions": "Un’alterazione visibile del corpo non è un semplice esercizio estetico. La voce è un confronto con gli effetti offensivi, da tenere distinto dalla pratica trasfigurativa.",
+    "example": "Analizzare una descrizione scritta e chiedere perché un cambiamento limitato della superficie possa avere conseguenze sul bersaglio.",
+    "question": "La piccola estensione visibile rende l’effetto trascurabile?",
+    "answer": "No. La dimensione della zona modificata non misura da sola le conseguenze.",
+    "mode": "Confronto teorico · effetti offensivi"
+  },
+  {
+    "name": "Duro",
+    "lesson": 12,
+    "effect": "Indurisce il bersaglio o gli conferisce una consistenza pietrosa secondo il riferimento.",
+    "notions": "Rigidità e colore sono proprietà diverse. Un oggetto che sembra pietra non dimostra da solo una variazione di consistenza, così come un colore invariato non la esclude.",
+    "example": "Confrontare su scheda un tessuto flessibile e il suo risultato irrigidito. Far indicare quale proprietà sia centrale.",
+    "question": "Quale parametro è prioritario: colore o struttura?",
+    "answer": "La struttura, in particolare la consistenza prevista dal progetto.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Piertotum Locomotor",
+    "lesson": 13,
+    "effect": "Anima statue o armature e ne permette il movimento secondo il comando impartito.",
+    "notions": "Animazione non significa vita o coscienza. La presenza di articolazioni, cavità e parti mobili influenza il progetto del movimento.",
+    "example": "Confrontare una statua piena e un’armatura articolata. Far spiegare perché lo stesso comando richieda visualizzazioni differenti.",
+    "question": "Un manufatto che esegue un comando ha acquisito volontà propria?",
+    "answer": "No. Il movimento osservato non dimostra coscienza o vita naturale.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Draconifors",
+    "lesson": 14,
+    "effect": "Nel riferimento anima una figura di drago. Il corso affronta il rapporto tra la forma draconica e il movimento delle sue parti.",
+    "notions": "Ali, coda e arti devono funzionare come insieme. Il testo viene seguito nella sua specifica interpretazione, senza attribuire altre capacità alla sola somiglianza con un drago.",
+    "example": "Studiare un modello statico e individuare quali parti richiedano un movimento coordinato. L’incontro rimane teorico.",
+    "question": "Una figura piccola è necessariamente facile da animare?",
+    "answer": "No. La complessità dipende anche dal numero e dalla relazione delle parti da governare.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Engorgio",
+    "lesson": 15,
+    "effect": "Ingrandisce il bersaglio. Nel progetto si osservano soprattutto dimensioni e proporzioni.",
+    "notions": "Un aumento di spazio può rendere inadatto l’appoggio iniziale. Ingrandire non significa acquisire nuove proprietà magiche o cambiare automaticamente materiale.",
+    "example": "Disegnare un oggetto sul suo supporto e una versione ingrandita. Chiedere quali ingombri debbano essere previsti prima della prova.",
+    "question": "Un oggetto più grande ha automaticamente nuovi poteri?",
+    "answer": "No. Il cambiamento di dimensione non dimostra proprietà ulteriori.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Reducio",
+    "lesson": 15,
+    "effect": "Riduce le dimensioni del bersaglio; viene confrontato con Engorgio e con il ritorno alle proporzioni previste.",
+    "notions": "Rimpicciolire riguarda lo spazio occupato. La riduzione va distinta dalla trasformazione in un materiale diverso o dalla scomparsa del bersaglio.",
+    "example": "Confrontare misure iniziali, ingrandite e ridotte di un oggetto. Far descrivere il risultato desiderato senza usare soltanto “più piccolo”.",
+    "question": "Ridurre significa far scomparire?",
+    "answer": "No. Il bersaglio rimane presente con dimensioni modificate.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Diminuendo",
+    "lesson": 15,
+    "effect": "Nel riferimento riduce il bersaglio ed è richiamato nel confronto con soggetti animati.",
+    "notions": "Una somiglianza di risultato non rende tutte le formule equivalenti per bersagli e condizioni. La distinzione si conserva senza estendere automaticamente le applicazioni di Reducio.",
+    "example": "Confrontare due descrizioni, una su oggetto e una su soggetto animato. Individuare quali informazioni servano prima di scegliere una formula.",
+    "question": "Un effetto simile autorizza a usare indifferentemente due formule?",
+    "answer": "No. Occorre conoscere bersaglio ammesso, contesto e condizioni insegnate.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Orchideus",
+    "lesson": 17,
+    "effect": "Fa apparire un mazzo di fiori dalla bacchetta. Nel modello del corso il bouquet è temporaneo.",
+    "notions": "Gambi, foglie e petali costituiscono una struttura articolata. Il colore generale si distingue dalle sfumature che rendono definito ogni elemento.",
+    "example": "Progettare un bouquet semplice su pergamena. Far spiegare perché pochi fiori ben descritti possano risultare più coerenti di un insieme complesso e vago.",
+    "question": "La comparsa di fiori dimostra che sia nata una pianta coltivabile?",
+    "answer": "No. Nel modello del volume si studia un’apparizione temporanea, distinta dalla crescita naturale.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Epoximise",
+    "lesson": 18,
+    "effect": "Fa aderire due oggetti attraverso una zona di contatto, unendoli secondo l’effetto descritto dal riferimento.",
+    "notions": "Il contatto fisico non equivale ad adesione. Il progetto riguarda la proprietà della superficie e l’area nella quale si vuole ottenere la congiunzione.",
+    "example": "Segnare su due campioni la superficie da unire. Far descrivere quali zone debbano aderire e quali rimanere separate.",
+    "question": "Accostare gli oggetti dimostra già una congiunzione riuscita?",
+    "answer": "No. Bisogna verificare il legame nella zona prevista.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Incarcerous",
+    "lesson": 18,
+    "effect": "Fa apparire funi destinate a legare o contenere il bersaglio. Il catalogo della scuola usa la denominazione Incarcerous.",
+    "notions": "Il libro di riferimento usa anche la variante Incarceramus. Qui la voce viene normalizzata al catalogo; si distingue da Incarcifors, che trasforma un oggetto in una gabbia.",
+    "example": "Confrontare su disegno una gabbia ottenuta da un oggetto e funi apparse attorno a un manichino. Ricostruire l’origine dei due effetti.",
+    "question": "Incarcerous e Incarcifors producono lo stesso tipo di intervento?",
+    "answer": "No. Il primo evoca funi; il secondo trasforma materia presente in una gabbia.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Melofors",
+    "lesson": 19,
+    "effect": "È associato alla comparsa di una testa di zucca o di una zucca che avvolge il capo. Il riferimento propone due spiegazioni del meccanismo.",
+    "notions": "La forma finale non permette da sola di scegliere tra evocazione e trasformazione umana. Il corso conserva questa distinzione come problema interpretativo.",
+    "example": "Presentare le due descrizioni senza eseguire la formula. Chiedere quali osservazioni aggiuntive permetterebbero di distinguerle.",
+    "question": "Vedere una zucca prova che la testa sia stata trasformata?",
+    "answer": "No. Potrebbe trattarsi di un involucro apparso attorno al capo: servono informazioni sull’origine dell’effetto.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Crinus Muto",
+    "lesson": 20,
+    "effect": "Cambia il colore dei capelli. È una modifica circoscritta dell’aspetto, affrontata nel quadro della Trasfigurazione umana.",
+    "notions": "Radici, punte e ciocche possono avere sfumature diverse. La precisione cromatica non equivale alla padronanza di trasformazioni complete del corpo.",
+    "example": "Colorare uno schema di capelli annotando tinta e sfumature. Far spiegare perché una modifica limitata richieda comunque un progetto accurato.",
+    "question": "Saper cambiare il colore dei capelli dimostra padronanza dell’intera anatomia?",
+    "answer": "No. È un compito circoscritto, con parametri e difficoltà specifici.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Densaugeo",
+    "lesson": 21,
+    "effect": "Fa crescere i denti del bersaglio. Il cambiamento riguarda una parte del corpo e può interferire con le sue funzioni.",
+    "notions": "Una variazione di dimensione non è neutra quando coinvolge l’anatomia. Il corso distingue la descrizione dell’effetto dal permesso di sperimentarlo.",
+    "example": "Studiare uno schema della dentatura e indicare quali funzioni possano essere coinvolte da una crescita anomala. La trattazione è teorica.",
+    "question": "Il fatto che cambi soltanto una parte del corpo rende semplice la valutazione?",
+    "answer": "No. Occorre considerare le relazioni con le altre strutture e con le funzioni del corpo.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Pullus",
+    "lesson": 21,
+    "effect": "Nel riferimento produce una trasformazione in forma aviaria. Il corso ne studia il confronto con le altre mutazioni del corpo.",
+    "notions": "Una trasformazione corporea completa richiede il confronto tra anatomia iniziale e finale. Non si riduce all’aggiunta di penne o al cambiamento del colore.",
+    "example": "Confrontare su disegno arti, becco e proporzioni. Individuare perché la perdita della parola umana richieda supervisione esterna.",
+    "question": "Un rivestimento di piume basta a descrivere una trasformazione completa?",
+    "answer": "No. Devono essere considerate l’intera struttura e le condizioni del soggetto.",
+    "mode": "Approfondimento teorico del riferimento"
+  },
+  {
+    "name": "Paperante",
+    "lesson": 21,
+    "effect": "Nel riferimento trasforma il soggetto in una forma di anatra.",
+    "notions": "Becco, ali, zampe e piumaggio definiscono un’anatomia diversa da quella umana. Il corso studia anche la difficoltà di comunicazione e la necessità di prevedere il ripristino.",
+    "example": "Confrontare la figura di un’anatra e quella umana su scheda, indicando le modifiche principali.",
+    "question": "Perché il progetto deve includere chi supervisiona?",
+    "answer": "Perché il soggetto trasformato può non poter comunicare normalmente e richiede un controllo esterno.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Piscofors",
+    "lesson": 22,
+    "effect": "Nel riferimento conduce il soggetto alla forma di un pesce.",
+    "notions": "Squame, pinne e proporzioni appartengono a un progetto complessivo. Una taglia finale piccola non elimina la distanza tra le anatomie confrontate.",
+    "example": "Studiare due sagome, umana e ittica, e individuare le parti che cambiano disposizione e funzione. L’attività è teorica.",
+    "question": "La piccola taglia del pesce rende automaticamente semplice la formula?",
+    "answer": "No. Conta la complessità delle modifiche e la differenza tra origine e risultato.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Entomorphis",
+    "lesson": 22,
+    "effect": "Secondo il riferimento induce caratteristiche e comportamento da insetto.",
+    "notions": "Una descrizione di tratti insettoidi va distinta dalla certezza di una trasformazione completa. Si analizzano soltanto le caratteristiche effettivamente riportate.",
+    "example": "Separare in una scheda aspetto esterno e comportamento, chiarendo quali informazioni non siano sufficienti a definire l’intera anatomia.",
+    "question": "Osservare un comportamento da insetto prova da solo una trasformazione completa?",
+    "answer": "No. Il comportamento è un dato distinto dalla struttura del corpo.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Furitum",
+    "lesson": 22,
+    "effect": "Nel riferimento conduce il soggetto alla forma di un furetto.",
+    "notions": "Una forma di mammifero mantiene alcune analogie generali, ma richiede comunque un nuovo progetto di proporzioni, arti e rivestimento.",
+    "example": "Confrontare su schema la postura umana e quella del furetto. Far descrivere le differenze senza dedurre una difficoltà minima dalla parentela tra mammiferi.",
+    "question": "Due forme di mammifero hanno una struttura direttamente intercambiabile?",
+    "answer": "No. La categoria generale non sostituisce la conoscenza delle anatomie specifiche.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Geminio",
+    "lesson": 23,
+    "effect": "Produce una copia di un oggetto. Nel riferimento il duplicato ne riprende l’aspetto senza acquisire automaticamente valore e proprietà magiche dell’originale.",
+    "notions": "Somiglianza ed equivalenza sono diverse. Una copia esteticamente fedele non dimostra l’identità di funzione, autenticità o durata.",
+    "example": "Confrontare la descrizione di un oggetto ordinario e di un manufatto magico. Elencare le proprietà che il solo aspetto non permetterebbe di verificare.",
+    "question": "Una copia visivamente perfetta garantisce ogni funzione dell’originale?",
+    "answer": "No. La somiglianza osservata non dimostra proprietà non verificate.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Inflatus",
+    "lesson": 23,
+    "effect": "Gonfia il bersaglio aumentandone il volume. Il riferimento lo descrive come un effetto offensivo, trattato soltanto in teoria.",
+    "notions": "Il volume può cambiare senza una modifica analoga del colore. Quando il bersaglio è animato occorre considerare conseguenze su equilibrio e funzione.",
+    "example": "Confrontare due sagome e individuare che cosa sia cambiato nello spazio occupato, distinguendolo dalla colorazione.",
+    "question": "Conservare il colore significa conservare tutte le condizioni iniziali?",
+    "answer": "No. Dimensioni e funzioni possono essere alterate anche quando la tinta resta uguale.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Homosembiante · Animaleus Nobodyx",
+    "lesson": 26,
+    "effect": "Nel riferimento restituisce la forma umana originaria a un essere umano trasfigurato. La formula riportata è Animaleus Nobodyx.",
+    "notions": "Il ripristino richiede di riconoscere il soggetto e la trasformazione subita. Non viene esteso automaticamente a doti innate, licantropia o maledizioni ereditarie.",
+    "example": "Analizzare un caso scritto distinguendo umano trasfigurato, Animagus e condizione ereditaria. Stabilire quali informazioni occorrano al docente prima del ripristino.",
+    "question": "Conoscere la formula basta a eseguire il ripristino?",
+    "answer": "No. Servono preparazione avanzata, conoscenza del soggetto e controllo dell’intervento.",
+    "mode": "Lezione della materia"
+  },
+  {
+    "name": "Chartanimus",
+    "lesson": null,
+    "effect": "Nel riferimento trasforma un foglio in una figura animale di carta animata. Il materiale rimane riconoscibile come carta.",
+    "notions": "Pieghe, appoggi e proporzioni danno una struttura tridimensionale. Il movimento magico si distingue dalla creazione di vita naturale.",
+    "example": "Confrontare un foglio disteso e il disegno della figura finale. Individuare quali parti debbano cambiare disposizione senza inventare nuovo materiale.",
+    "question": "Una figura cartacea che si muove è diventata un animale naturale?",
+    "answer": "No. Nel modello del riferimento conserva la natura cartacea, pur essendo animata.",
+    "mode": "Esempio complementare del riferimento"
+  }
+]

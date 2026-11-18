@@ -19,3 +19,8 @@ La tabella riporta la documentazione ricevuta; non dimostra l’esistenza di ult
 Ars Transfigurationis, autore fittizio Edmund Valemont: nessun riferimento a Lucian Sharp. Primo anno organizzato in quattro lezioni: fondamenti e parametri; Colovaria; Aguamenti; Avis con ripasso dei limiti. Le tre formule restano nel primo anno. Il confronto Avis/Avifors al terzo anno è un approfondimento.
 
 Ogni anno dura due settimane con due lezioni per settimana; dopo quattro lezioni si passa al successivo. Sette anni, quattordici settimane, ventotto lezioni. Mantenere la presentazione a libro A4 sfogliabile sul modello di Ars Potionum, con indice ricercabile, pagine singole o doppie, ingrandimento e segnalibri.
+
+
+## Revisione delle nozioni · 18 novembre 2026
+
+Ogni formula ha una scheda con effetto, nozioni, esempio da discutere e domanda con risposta. Le schede sono parte delle lezioni esistenti: restano 28 incontri, quattro per anno. La documentazione e il catalogo della scuola prevalgono sulle convenzioni generali. Le formule complementari del riferimento restano studio teorico, senza attribuire abilità non documentate. Blink e i dettagli specifici di Fireball richiedono conferma della scuola.

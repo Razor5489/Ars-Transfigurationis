@@ -8,6 +8,9 @@ ROOT=Path(__file__).parent
 DATA=json.loads(subprocess.check_output(['node','-e',"const fs=require('fs'),vm=require('vm');let c={};vm.createContext(c);vm.runInContext(fs.readFileSync('content.js','utf8')+'\\n'+fs.readFileSync('server-lessons.js','utf8')+'\\nthis.out={years:YEARS,lessons:LESSONS}',c);process.stdout.write(JSON.stringify(c.out));"],cwd=ROOT))
 OUT=ROOT/'pages';OUT.mkdir(exist_ok=True)
 ROMAN=['I','II','III','IV','V','VI','VII'];PAGES=[];CHAPTERS=[];SECTIONS=[]
+NOTES=json.loads((ROOT/'spell-notes.json').read_text())
+SHEET_POSITIONS={};INDEX_ROWS=[];ANNUAL_ROWS=[];LESSON_POSITIONS={}
+BOOK_TITLE='ARS TRANSFIGURATIONIS'
 INK='#283b32';GOLD='#ac9258';MUTED='#8e8a76';PAPER='#f8f4e8';GREEN='#153f33'
 
 def text(x,y,s,size=12,fill=INK,weight='',anchor='',italic=False):
@@ -48,6 +51,7 @@ class Leaf:
         for line in ls:self.parts.append(text(66,self.y,line,11));self.y+=16
         self.y+=22;self.plain.extend([label,s])
     def row(self,left,right):
+        self.parts.append('<!--ROW:'+str(len(self.plain))+'-->')
         for line in lines(left,11,417):self.parts.append(text(60,self.y,line,11));self.y+=16
         self.parts.append(text(536,self.y-16,right,10,MUTED,anchor='end'))
         self.parts.append(f'<path d="M60 {self.y-8}H536" stroke="#c3b89b" stroke-dasharray="1 3" stroke-width=".4"/>');self.y+=12
@@ -65,6 +69,16 @@ def add(leaf,chapter=None):
     artwork=leaf.finish(folio);name=f'page-{idx+1:02}.svg';(OUT/name).write_text(artwork)
     PAGES.append({'image':'pages/'+name,'text':'ARS TRANSFIGURATIONIS\n'+'\n'.join(leaf.plain),'title':leaf.title,'folio':folio,'kind':leaf.kind})
     return idx
+
+def spell_sheet(item,section):
+    p=Leaf(section,item['name'],'La formula · Effetto e nozioni per la lezione',kind='spell')
+    p.paragraph(item['mode'],9,MUTED,True,13)
+    for label,key in [('Che cosa fa','effect'),('Nozioni da spiegare','notions'),('Esempio da discutere in aula','example')]:
+        p.heading(label);p.paragraph(item[key],12,leading=18)
+    p.heading('Domanda alla classe');p.paragraph(item['question'],11.5,leading=17)
+    p.box('Risposta ragionata',item['answer'])
+    SHEET_POSITIONS[item['name']]=len(PAGES)+1
+    add(p,item['name']+' · Effetto e nozioni')
 
 def cover(back=False):
     body='<rect width="595" height="842" fill="url(#leather)"/><rect width="595" height="842" fill="url(#paper)" opacity=".22"/>'
@@ -94,8 +108,6 @@ p.paragraph('Edmund Valemont',13,GREEN,True)
 add(p,'Praefatio')
 
 p=Leaf('Tabula Materiarum','Indice del volume','Sette anni, un solo metodo.')
-for title,folio in [('Prefazione','02'),('Il percorso delle due settimane','04'),('Fondamenti della Trasfigurazione','05')]+[(f'Anno {ROMAN[i]} · '+y['name'],f'{6+i*10:02}') for i,y in enumerate(DATA['years'])]+[('Lessico essenziale','76'),('Lezioni e formule della scuola','77'),('Finis','78')]:p.row(title,folio)
-p.paragraph('L’indice ricercabile permette di trovare anche una singola formula. Le linguette laterali aprono le annualità. Una pagina può essere segnata e ritrovata nello stesso browser.',10,MUTED)
 add(p,'Indice del volume');SECTIONS.append(['Indice',2])
 p=Leaf('Cursus Septem Annorum','Due settimane per anno','Il ritmo didattico del volume')
 p.heading('Settimana I');p.paragraph('Lezione 1: principi e osservazione. Lezione 2: sviluppo e confronto. Ogni incontro presenta una pratica centrale o un caso da interpretare.')
@@ -114,7 +126,7 @@ for yi,y in enumerate(DATA['years']):
     p=Leaf('Anno '+ROMAN[yi],y['name'],'Annus '+['Primus','Secundus','Tertius','Quartus','Quintus','Sextus','Septimus'][yi],kind='divider')
     p.y+=36;p.parts.append(text(297.5,p.y,ROMAN[yi],100,GREEN,anchor='middle'));p.y+=60
     p.paragraph(y['goal'],16,GREEN,True,24)
-    p.box('Il ciclo dell’annualità','Due settimane. Due lezioni ogni settimana. Quattro incontri prima del passaggio all’anno successivo.')
+    p.box('Il ciclo dell’annualità','Due settimane. Due lezioni ogni settimana. Quattro incontri. Le schede delle formule sono letture della stessa lezione, non incontri aggiuntivi.')
     if year==1:p.paragraph('Le formule del primo anno: Colovaria, Aguamenti, Avis.',13,GREEN)
     add(p,'Anno '+ROMAN[yi]+' · '+y['name']);SECTIONS.append([ROMAN[yi],idx])
     p=Leaf('Anno '+ROMAN[yi],'Il programma dell’anno','Due settimane · Quattro lezioni')
@@ -123,13 +135,18 @@ for yi,y in enumerate(DATA['years']):
         p.row(f"Lezione {l['meeting']} · {l['title']}",f'{idx+3+li*2:02}')
         p.paragraph(l['subtitle'],10,MUTED,True,15)
     p.box('Traguardo',y['goal']);p.paragraph('Leggere la teoria, preparare il compito e confrontare il risultato. La quarta lezione chiude il ciclo e raccoglie il ripasso dell’annualità.',11)
+    ANNUAL_ROWS.append((len(PAGES),year))
     add(p)
     for l in annual:
+        LESSON_POSITIONS[(year,l['meeting'])]=len(PAGES)+1
         p=Leaf(f"Anno {ROMAN[yi]} · Settimana {ROMAN[l['week']-1]}",l['title'],l['subtitle'])
         p.parts.insert(3,text(52,72,f"LECTIO {l['meeting']} · TEORIA",8,GOLD))
         for paragraph in l['theory']:p.paragraph(paragraph)
         p.box('Obiettivo',l['check']);p.paragraph('Riferimento: '+l['source'],8.5,MUTED,False,12)
         add(p,f"{ROMAN[yi]}.{l['meeting']} · {l['title']}")
+        for note in NOTES:
+            if note['lesson']==(year-1)*4+l['meeting']-1:
+                spell_sheet(note,f"Anno {ROMAN[yi]} · Lectio {l['meeting']}")
         p=Leaf(f"Anno {ROMAN[yi]} · Lectio {l['meeting']}",'L’esercizio e il giudizio',l['title']+' · Scheda operativa')
         p.box('Preparazione',l['materials'])
         for i,s in enumerate(l['steps']):p.paragraph(f'{i+1}. '+s,11.5,leading=17)
@@ -148,6 +165,10 @@ p.heading('Il ruolo del riferimento');p.paragraph('Il libro «Trasfigurazione» 
 p.heading('Edizione e attribuzione');p.paragraph('Ars Transfigurationis è un volume personale di Edmund Valemont, preparato per l’esperienza roleplay di NightFall. Le attività sono proposte didattiche originali. I riferimenti a personaggi o avvenimenti posteriori al 1890 sono esclusi.')
 p.paragraph('Creato per NightFall da Razor. Progetto amatoriale, non ufficiale.',10,MUTED)
 add(p,'Lezioni della scuola');SECTIONS.append(['Appendice',76])
+supplements=[n for n in NOTES if n['lesson'] is None]
+if supplements:
+    SECTIONS.append(['Formule',len(PAGES)])
+    for note in supplements:spell_sheet(note,'Repertorio · '+note['mode'].split(' · ')[0])
 p=Leaf('Finis','La forma muta.','Il metodo rimane.')
 p.y=370;p.paragraph('Sette annualità. Quattordici settimane. Ventotto lezioni per distinguere ciò che cambia da ciò che rimane.',19,GREEN,True,29)
 p.y+=55;p.paragraph('Edmund Valemont',15,GREEN);p.paragraph('Hogwarts · MDCCCXC',10,GOLD)
@@ -157,7 +178,44 @@ for i in range(38):
     yy=i*24;body+=f'<path d="M-40 {yy} Q130 {yy-80} 298 {yy+9}T650 {yy-5}" fill="none" stroke="{["#9a8659","#6c855d","#38584a"][i%3]}" stroke-width="{1+i%4}" opacity=".5"/>'
 (OUT/name).write_text(svg(body));PAGES.append({'image':'pages/'+name,'text':'Controguardia posteriore marmorizzata.','title':'Controguardia posteriore','folio':'Controguardia','kind':'endpaper'})
 cover(True)
-assert len(PAGES)==80,len(PAGES)
+assert len(DATA['lessons'])==28
+assert len(SHEET_POSITIONS)==len(NOTES)
+# Resolve printed tables after every inserted sheet has its final folio.
+chapter_pages={c['title']:c['page'] for c in CHAPTERS}
+original_sections={'Indice':'Indice del volume','Fondamenti':next(c['title'] for c in CHAPTERS if c['title'].startswith('Fondamenti ·')),'Lessico':'Lessico essenziale'}
+for section in SECTIONS:
+    label=section[0]
+    if label in ROMAN:section[1]=chapter_pages['Anno '+label+' · '+DATA['years'][ROMAN.index(label)]['name']]-1
+    elif label in original_sections:section[1]=chapter_pages[original_sections[label]]-1
+    elif label=='Materie':section[1]=chapter_pages['Incantesimi · Tavola per anno']-1
+    elif label=='Appendice':section[1]=chapter_pages['Lezioni della scuola']-1
+
+def replace_leaf(index,leaf):
+    old=PAGES[index];folio=f'{index+1:02}'
+    (OUT/f'page-{index+1:02}.svg').write_text(leaf.finish(folio))
+    old['text']=BOOK_TITLE+'\n'+'\n'.join(leaf.plain)
+    old['title']=leaf.title
+
+for index,year in ANNUAL_ROWS:
+    y=DATA['years'][year-1];annual=[l for l in DATA['lessons'] if l['year']==year]
+    p=Leaf('Anno '+ROMAN[year-1],'Il programma dell’anno','Due settimane · Quattro lezioni')
+    for li,l in enumerate(annual):
+        if li%2==0:p.heading('Settimana '+ROMAN[li//2])
+        p.row(f"Lezione {l['meeting']} · {l['title']}",str(LESSON_POSITIONS[(year,l['meeting'])]))
+        p.paragraph(l['subtitle'],10,MUTED,True,15)
+    p.box('Traguardo',y['goal'])
+    p.paragraph('Ogni incontro comprende teoria, spiegazione delle formule ed esercizio. Le schede aggiunte appartengono alla stessa lezione. Dopo il quarto incontro si passa all’anno successivo.',11)
+    replace_leaf(index,p)
+
+p=Leaf('Tabula Materiarum','Indice del volume','Sette anni · Ventotto lezioni')
+for title in ['Praefatio','Il percorso delle due settimane',original_sections['Fondamenti']]+['Anno '+ROMAN[i]+' · '+y['name'] for i,y in enumerate(DATA['years'])]+['Lessico essenziale']:
+    p.row('Prefazione' if title=='Praefatio' else title,str(chapter_pages[title]))
+supplement_start=next((c['page'] for c in CHAPTERS if c['title'].endswith(' · Effetto e nozioni') and c['page']>chapter_pages['Lessico essenziale']),None)
+if supplement_start:p.row('Repertorio delle formule · Schede distinte',str(supplement_start))
+p.row('Finis',str(chapter_pages['Finis']))
+p.paragraph('Le schede delle formule si trovano nelle rispettive lezioni. Il repertorio raccoglie le voci complementari. L’indice ricercabile permette di trovare ogni incantesimo per nome.',10,MUTED)
+replace_leaf(2,p)
+for item in PAGES:item['image']+='?v=20261118-nozioni1'
 (ROOT/'book-data.json').write_text(json.dumps({'pages':PAGES,'chapters':CHAPTERS,'sections':SECTIONS},ensure_ascii=False,indent=2))
 index=ROOT/'index.html'
 if index.exists() and 'id="book-data"' in index.read_text():
